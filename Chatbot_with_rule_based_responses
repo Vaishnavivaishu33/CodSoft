@@ -1,0 +1,46 @@
+# Simple rule-based chatbot focused on world capitals with country name extraction
+
+def get_response(user_input):
+    # Convert user input to lowercase to make it case-insensitive
+    user_input = user_input.lower()
+    
+    # Define a dictionary mapping countries to their capitals
+    country_capitals = {
+        "india": "New Delhi",
+        "brazil": "Brasília",
+        "france": "Paris",
+        "japan": "Tokyo",
+        "australia": "Canberra",
+        "usa": "Washington, D.C.",
+        "canada": "Ottawa",
+        "germany": "Berlin",
+        "italy": "Rome",
+        "south africa": "Pretoria (executive), Bloemfontein (judicial), Cape Town (legislative)"
+        # Add more countries and their capitals as needed
+    }
+    
+    # Search for country names in user input and extract the capital
+    for country, capital in country_capitals.items():
+        if country in user_input:
+            return f"The capital of {country.capitalize()} is {capital}."
+    
+    # Handle greetings and goodbyes
+    if "hello" in user_input or "hi" in user_input:
+        return "Hello! I'm here to help you with information about world capitals. What country's capital would you like to know?"
+    elif "bye" in user_input or "goodbye" in user_input:
+        return "Goodbye! Have a great day!"
+    
+    # Default response for unknown queries
+    return "I'm sorry, I don't have information about that country's capital. Can you please ask about another country?"
+
+# Main loop to interact with the user
+def main():
+    print("Chatbot: Hi! I'm your World Capitals Chatbot. Ask me about the capitals of different countries. Type 'bye' to exit.")
+    while True:
+        user_input = input("You: ")
+        response = get_response(user_input)
+        print(f"Chatbot: {response}")
+        if "bye" in user_input or "goodbye" in user_input:
+            break
+if __name__ == "__main__":
+    main()
