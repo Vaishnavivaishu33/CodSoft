@@ -1,4 +1,4 @@
-def get_response(user_input):
+def chatbot(user_input):
     # Convert user input to lowercase to make it case-insensitive
     user_input = user_input.lower()
     
@@ -12,9 +12,7 @@ def get_response(user_input):
         "usa": "Washington, D.C.",
         "canada": "Ottawa",
         "germany": "Berlin",
-        "italy": "Rome",
-        "south africa": "Pretoria (executive), Bloemfontein (judicial), Cape Town (legislative)"
-        # Add more countries and their capitals as needed
+        "italy": "Rome"
     }
     
     # Search for country names in user input and extract the capital
@@ -22,13 +20,13 @@ def get_response(user_input):
         if country in user_input:
             return f"The capital of {country.capitalize()} is {capital}."
     
-    # Handle greetings and goodbyes
+    # greetings and goodbyes
     if "hello" in user_input or "hi" in user_input:
         return "Hello! I'm here to help you with information about world capitals. What country's capital would you like to know?"
     elif "bye" in user_input or "goodbye" in user_input:
         return "Goodbye! Have a great day!"
     
-    # Default response for unknown queries
+    # for unknown queries
     return "I'm sorry, I don't have information about that country's capital. Can you please ask about another country?"
 
 # Main loop to interact with the user
@@ -36,7 +34,7 @@ def main():
     print("Chatbot: Hi! I'm your World Capitals Chatbot. Ask me about the capitals of different countries. Type 'bye' to exit.")
     while True:
         user_input = input("You: ")
-        response = get_response(user_input)
+        response = chatbot(user_input)
         print(f"Chatbot: {response}")
         if "bye" in user_input or "goodbye" in user_input:
             break
